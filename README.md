@@ -73,4 +73,21 @@ Components run with the same level of privileges as the application that uses th
 
 "The Heartbleed bug allows anyone on the Internet to read the memory of the systems protected by the vulnerable versions of the OpenSSL software." (source : heartbleed.com)
 
+## Injection
+
+### Overview of the study
+- This category represents the sixth most common security vulnerability according to the OWASP Top 10 critical security of 2021.
+- 94% of the applications were tested. Ce teste a révélé un taux maximal de 19% d'incident, pour une moyen de 3% d'incident et plus de 274k d'occurence CWE.
+- Parmis les 274k CWE occurences, la CWE-79, la CWE-89 et la CWE-73 sont les catégories les plus présente. 
+- CWE-79 : Cross-site scripting, est un type de faille de sécurité des site internet qui pemet l'injection de contenu dans une page internet. Cela proque ainsi des actions sur les navigateur web visitant la page.
+- CWE-89 : injection SQL, est un type de faille de sécurité qui permet à l'attaquant de rentrer des commandes sql, dans le but de volé, modifier ou détruire des données.
+- CWE-73 : External Control of File Name or Path, est un type de faille de sécurtite de logiciel qui permet à un utilisateur d'entrer et de contôler ou influencer les chemins ou les noms de fichiers dans les opérations du système de fichiers.
+
+### Description
+- Les données entrée par les utilisateur ne sont pas validée, contrôler, filtré par l'application. 
+- Les requêtes dynamic et non parmétrée sont directement interprété par l'interpréteur.
+- 
+
+
+
 
