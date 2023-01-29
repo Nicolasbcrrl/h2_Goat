@@ -131,6 +131,76 @@ In these two scenarios we can see that the attacker can easily modify the id par
 
 [CWE](https://cwe.mitre.org/)
 
-    
+----------
 
+## SQLZoo
+### 0 SELECT basics
+#### Introducing the world table of countries
+
+Pour afficher la population de l'Allemagne, j'ai changer la France par l'Allemagne comme le montre la commande ci-dessous.
+
+    $ SELECT population FROM world WHERE name = 'Germany'
+    
+#### Scandinavia
+
+Pour afficher la population de Sweden, Norway et Denmark, j'ai fait la commande ci-dessous en changeant le Brazil, la Russie et l'Inde par la Suède, la Norvège et le Danemark.
+
+    $ SELECT name, population FROM world WHERE name IN ('Sweden', 'Norway', 'Denmark');
+ 
+#### Just the right size
+
+Pour afficher les pays ayant une taille se situant entre 200'000 et 250'500, j'ai fait la commande ci-dessous en changeant le 250'000 par 200'000 et 300'000 par 250'000.
+
+    $ SELECT name, area FROM world WHERE area BETWEEN 200000 AND 250000
+
+### 2 SELECT from World, from first subtask to 5 "France, Germany, Italy"
+#### 1) Introduction
+
+Pour afficher les noms, les continents et la population du monde, j'ai exécuté la commande ci-dessous.
+
+    $ SELECT name, continent, population FROM world
+    
+#### 2) Large Countries
+
+Pour afficher les noms des pays ayant une population d'au moins 200 million, j'ai exécuté la commande ci-dessous en modifiant 64'105'700 par 200'000'000 et en changeant le **"="** par **">="**.
+
+    $ SELECT name FROM world WHERE population >= 200000000
+   
+#### 3) Per Capita GDP
+
+Pour afficher les noms des pays et le PIB par habitant pour les pays ayant au moins une population de 200 million, j'ai effectué la commande ci-dessous.
+
+    $ SELECT name, gdp/population FROM world WHERE population >= 200000000
+    
+#### 4) South America In millions
+
+Pour afficher les noms et la population en million des pays se situant en Amérique du Sud, j'ai effectuer la commande suivante.
+
+    $ SELECT name, population / 1000000 FROM world WHERE continent = 'South America'
+
+#### 5) France, Germany, Italy
+
+Pour afficher les noms et population de la France, L'Allemagne et l'Italie, j'ai effectuer la commande suivante : 
+
+    $ SELECT name, population  FROM world Where name IN ('France', 'Germany', 'Italy')
+
+#### 7) United
+
+Pour afficher touts les noms des pays ayant le mot **"United"** dans leur nom, j'ai utilisé **"LIKE"** avec le symbole **"%"**. Le symbole **"%"** permet d'indiquer la position de la particule dans l'élément rechercher.
+
+%test  : tous les éléments finissant par **"test"**.
+
+test%  : tous les éléments commençant par **"test"**.
+
+%test% : tous les éléments ayant dedans **"test"**
+
+
+    $ SELECT name FROM world Where name LIKE '%United%'
+
+## Sources
+
+[0 SELECT basics](https://sqlzoo.net/wiki/SELECT_basics)
+
+[2 SELECT from World](https://sqlzoo.net/wiki/SELECT_from_WORLD_Tutorial)
+------------
 
