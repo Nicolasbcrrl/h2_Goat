@@ -129,6 +129,7 @@ In these two scenarios we can see that the attacker can easily modify the id par
 
 [Heartbleed Bug](https://heartbleed.com/)
 
+[CWE](https://cwe.mitre.org/)
 
     
 
