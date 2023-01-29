@@ -202,5 +202,6 @@ test%  : tous les éléments commençant par **"test"**.
 [0 SELECT basics](https://sqlzoo.net/wiki/SELECT_basics)
 
 [2 SELECT from World](https://sqlzoo.net/wiki/SELECT_from_WORLD_Tutorial)
+
 ------------
 
