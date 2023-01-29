@@ -107,17 +107,27 @@ To avoid having an application vulnerable to injections, you need to scan your c
 
 ### Exemple Attack Scenarios
 #### Scenario 1
-L'application utilise des données non sure dans son appel SQL. 
+The application uses unsafe data in its SQL call. 
 
     $ String query = "SELECT \* FROM accounts WHERE custID='" + request.getParameter("id") + "'";
     
 #### Scenario 2
 
-L'utilisation de framework ne garantie pas le risque 0 d'avoir des requêtes non vulnérables.
+The use of frameworks does not guarantee the 0 risk of having non-vulnerable requests.
 
     $  Query HQLQuery = session.createQuery("FROM accounts WHERE custID='" + request.getParameter("id") + "'");
     
-Dans ces deux scénario nous pouvons constater que l'attaquant peut facilement modifier le parametre de l'id, ce qui peut conduire dans les pires des cas à une corruption ou à la supression de données.
+In these two scenarios we can see that the attacker can easily modify the id parameter, which can lead in the worst case to data corruption or deletion.
+
+## Sources
+
+[A03 Injection](https://owasp.org/Top10/A03_2021-Injection/)
+
+[A05 Security Misconfiguration](https://owasp.org/Top10/A05_2021-Security_Misconfiguration/)
+
+[A06 Vulnerable and Outdated Components](https://owasp.org/Top10/A06_2021-Vulnerable_and_Outdated_Components/)
+
+
     
 
 
