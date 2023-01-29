@@ -84,10 +84,40 @@ Components run with the same level of privileges as the application that uses th
 - CWE-73 : External Control of File Name or Path, est un type de faille de sécurtite de logiciel qui permet à un utilisateur d'entrer et de contôler ou influencer les chemins ou les noms de fichiers dans les opérations du système de fichiers.
 
 ### Description
-- Les données entrée par les utilisateur ne sont pas validée, contrôler, filtré par l'application. 
-- Les requêtes dynamic et non parmétrée sont directement interprété par l'interpréteur.
-- 
+- Data entered by users is not validated, checked or filtered by the application. 
+- Dynamic and unparmet queries are directly interpreted by the interpreter.
+- Malicious data is used in the search parameters of the ORM, in order to steal data.
+- The SQL command contains the malicious structure.
 
+The most common injections are :
+- SQL
+- NoSQL
+- OS command
+- ORM (Object Relational Mapping)
+- EL (Expression Language)
+- OGNL (Object Graph Navigation Library)
 
+To avoid having an application vulnerable to injections, you need to scan your code for possible weaknesses that make your application vulnerable to injection. This task can be automated by using static, dynamic and interactive security tools directly in the CI/CD pipeline to identify weaknesses and fix them before deployment. 
+
+### How to Prevent
+- use a secure API instead of an interpreter.
+- providing a tightly parameterised interface or using an ORM. However, even well parameterised, this does not entirely avoid injections. 
+- For all dynamic commands, use the special **"escape"** syntax which allows you to transform each user input into text, in order to avoid sending a query. However, for SQL structures it is not possible to use the **"escape"** syntax.
+- Use tools such as SQL controls and LIMIT to avoid massive data leakage in case of injection.
+
+### Exemple Attack Scenarios
+#### Scenario 1
+L'application utilise des données non sure dans son appel SQL. 
+
+    $ String query = "SELECT \* FROM accounts WHERE custID='" + request.getParameter("id") + "'";
+    
+#### Scenario 2
+
+L'utilisation de framework ne garantie pas le risque 0 d'avoir des requêtes non vulnérables.
+
+    $  Query HQLQuery = session.createQuery("FROM accounts WHERE custID='" + request.getParameter("id") + "'");
+    
+Dans ces deux scénario nous pouvons constater que l'attaquant peut facilement modifier le parametre de l'id, ce qui peut conduire dans les pires des cas à une corruption ou à la supression de données.
+    
 
 
