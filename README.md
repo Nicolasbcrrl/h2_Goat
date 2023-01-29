@@ -127,6 +127,8 @@ In these two scenarios we can see that the attacker can easily modify the id par
 
 [A06 Vulnerable and Outdated Components](https://owasp.org/Top10/A06_2021-Vulnerable_and_Outdated_Components/)
 
+[Heartbleed Bug](https://heartbleed.com/)
+
 
     
 
