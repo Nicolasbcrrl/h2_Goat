@@ -205,3 +205,44 @@ test%  : tous les éléments commençant par **"test"**.
 
 ------------
 
+## A1 Injection (intro)
+
+### What is SQL ? exercices
+
+Pour cet exercice, je devais trouver le département de l'employé **"Bob"** en m'aidant de la table **"employees"**. J'ai effectuer la commande suivante pour trouver le nom du département :
+ 
+     $ SELECT department FROM employees WHERE first_name = 'Bob';
+     
+### Data Manipulation Language (DML)
+
+Pour modifier le département de l'employé **"Tobi Barnett"**, j'ai eu recours à commande **"UPDATE"** afin de modifier le département.
+
+    $ UPDATE employees SET department = 'Sales' WHERE first_name = 'Tobi' and last_name = 'Barnett';
+    
+J'ai utilisé le prénom et le nom de famille pour éviter au maximum la confusion avec une personne qui aurait un nom ou un nom de famille équivalente.
+
+### Data Definition Language (DDL)
+
+Pour ajouter une nouvelle colonne dans la table, il faut utiliser la commande SQL **"ALTER TABLE"** pour modifier la table et ensuite utilisé la commande **"ADD COLUMN"**. Comme le montre la commande ci-dessous:
+
+    $ ALTER TABLE employees ADD COLUMN phone varchar(20);
+    
+### Data Control Language (DCL)
+
+Pour modifier les permissions dans la gestion d'une base de données, il est plus simple de créer des groupes d'utilisateur avec des permissions prédéfinit par l'administrateur. Dans cette execercice, j'ai dû autoriser le groupe **"UnauthorizedUser"** à pouvoir modifier les tables de la base de donnée. Pour cela j'ai utilisé la commande **"GRANT"** qui permet la mise en place des privilège.
+
+    $ GRANT ALTER TABLE TO UnauthorizedUser;
+    
+### Try It! String SQL injection
+
+Pour faire l'injection, je me suis basé sur les diffèrents exemple présenté au chapitre 6 de **SQL Injection (intro)**. De plus en lisant les consigne j'ai vu que savoir le nom spécifique d'un utilisateur n'était pas nécessaire. Avec tout cela pris en compte, j'ai parmettré cette commande SQL :
+
+    $ SELECT * FROM user_data WHERE first_name = 'John' AND last_name = '' or '1' = '1'
+
+Selon les explications, cette injection fonctionne car **"or '1' = '1'"** est toujours évalué comme vrai.
+
+### Try It! String SQL injection
+
+    $ SELECT * FROM user_data WHERE Login_Count = 1 and userid = 1 or true
+ 
+    
