@@ -137,37 +137,37 @@ In these two scenarios we can see that the attacker can easily modify the id par
 
 ### SSL protocol
 
-SSL pour Secure Socket Layer, est un protocole dévelopé par la compagnie Netscape Communication Corporation. Ce protocole permet aux applications client/serveur de communiquer de manière sécurisée. La version 3 introduite en 2003  est utilisée par les navigateurs. Ce protocole à connue une "évolution" créer par l'IETF (Internet Engineering Task Force) qui est le protocole TLS (Transport Layer Security)
+SSL stands for Secure Socket Layer and is a protocol developed by the Netscape Communication Corporation. This protocol allows client/server applications to communicate securely. Version 3, introduced in 2003, is used by browsers. This protocol has undergone an "evolution" created by the IETF (Internet Engineering Task Force) which is the TLS (Transport Layer Security) protocol.
 
 ### openSSL
 
-OpenSSL est une boite à outils de cryptographie qui comporte deux biliothèques, libcrypto et libssl. oppenSSL implémente les protocoles SSL et TLS. Cette boite à outilis offre la possibilité de réaliser des application client/serveur sécurisées s'appuyant sur SSL et TLS. Il propose également une ligne de commande permettant notamant : 
-- la création de clés RSA, DSA 
-- chiffrement et déchiffrement 
-- la signature et le chiffrement de courriers
-- test de client et servers SSL/TLS
-- création de certificats X509
+OpenSSL is a cryptography toolkit that includes two libraries, libcrypto and libssl. oppenSSL implements the SSL and TLS protocols. This toolkit offers the possibility to build secure client/server applications based on SSL and TLS. It also offers a command line allowing in particular: 
+- the creation of RSA and DSA keys 
+- encryption and decryption 
+- signature and encryption of mails
+- testing of SSL/TLS clients and servers
+- creation of X509 certificates
 
 ### Heartbleed
 
-Heartbleed est une vulnérabilité qui été découverte le 7 avril 2014 par des équipes de sécurité de Google et par des ingénieurs de l'entreprise finlandaise Codenomicon. Plus de 17% des serveur web soit environ un demi-million de serveur aurait été touché par cette vulnérabilité qui touche la bibliothèque de logiciel openSSL. Cette vulnérabilité a été introduite suite à une proposition de correction de bugs et d'améliorations de la version 1.0.1 d'openSSL. Les version d'openSSL qui ont été affecté sont de la 1.0.1 à 1.0.1f et 1.0.2-beta1. Heartbleed permet à l'attaquant de voler des données protégées par le cryptage SSL/TLS. Cette vulnérabilité permet à n'importe qu'elle personne sur Internet de lir la mémoir des sytèmes protégés. Il compromet :
-- les clé secrètes
-- les noms et mots de passe des utilisateurs
-- l'intégrité du contenu
-Les attaquants peuvent par ce moyen écouter des communications et volé des donnée directement à l'utilisateur et des services. Cela sans avoir à utiliser d'information ou d'identifiants privilégiés, selon les auteur du site internet [heartbleed.com](https://heartbleed.com/), qui ont menet des tests sur leurs services.
+Heartbleed is a vulnerability that was discovered on 7 April 2014 by Google security teams and engineers from the Finnish company Codenomicon. More than 17% of web servers, or about half a million servers, have been affected by this vulnerability, which affects the openSSL software library. The vulnerability was introduced as a result of a proposed bug fix and enhancement to openSSL version 1.0.1. The versions of openSSL that have been affected are 1.0.1 through 1.0.1f and 1.0.2-beta1. Heartbleed allows the attacker to steal data protected by SSL/TLS encryption. This vulnerability allows anyone on the Internet to read the memory of protected systems. It compromises :
+- secret keys
+- user names and passwords
+- the integrity of the content
+Attackers can eavesdrop on communications and steal data directly from users and services. This is without having to use privileged information or credentials, according to the authors of the website [heartbleed.com](https://heartbleed.com/), who have conducted tests on their services.
 
-#### Comment fonctionne-t-elle ?
+#### How does it work ?
 
-Les protocoles SSL et TLS possèdent une fonctionnalité que l'on nomme **"Heartbeat"**. Cette foncitonnalité permet à une extrimité d'une communication client ou server d'envoyer un message que l'interlocuteur va répéter en retour, afin de verfier que la connection est active et chiffrée. Le mesage envoyé par un client qui veut controller si le serveur est toujours actif, envoi le messge et un entier représentant la longueur du message. Suite à la sortie de la mise à 1.0.1, les développeurs d'oppenSSL n'ont pas mis un outils qui va vérifier que la longueur réel du message corresponde vraiment à l'indicateur de taille du message envoyer par le client.
+The SSL and TLS protocols have a feature called **"Heartbeat"**. This feature allows an endpoint of a client or server communication to send a message that the other endpoint will repeat in return, to verify that the connection is active and encrypted. The message sent by a client who wants to check if the server is still active, sends the message and an integer representing the length of the message. Following the release of 1.0.1, the developers of oppenSSL did not provide a tool that will check that the actual message length actually matches the message size indicator sent by the client.
 
-Cette vulnérabilité est essentiellement basée sur le fait que le serveur ne vérifie pas l'entier correspondant à la taille du message et de ce fait à cause de la fonctionnalité **"Heartbeat"**, le serveur renvoit autant d'octest que demandé par le client. De ce fait, le client indique une taille du message plus grande que celle du message. Le serveur va donc combler le vide en retournant des information au hasard pour combler la différence. Soit des informations non utile, comme très sensible comme des clés privée de certificat, mots de passe et nom d'utilisateurs. L'attaquant ne sachant pas à l'avance les données que le serveur va renvoyer, il devra faire un tri des données qu'il juge utile ou pas.
+This vulnerability is essentially based on the fact that the server does not check the integer corresponding to the size of the message and therefore because of the **"Heartbeat "** feature, the server returns as many octest as requested by the client. As a result, the client indicates a message size larger than the message size. The server will then fill the gap by returning random information to make up the difference. Either not useful information, or very sensitive information such as private certificate keys, passwords and user names. As the attacker does not know in advance what data the server will return, he will have to sort out the data he considers useful or not.
 
 ![heartbleed](Simplified_Heartbleed_explanation.svg.png)
 
 
 #### Résolution
 
-Le patch 1.0.1g d'openSSL corrige cette vulnérabilité. Il est donc recommandé de passer à cette version le plus rapidement possible.
+The 1.0.1g patch of openSSL fixes this vulnerability. It is therefore recommended to upgrade to this version as soon as possible.
 
 ## Sources
 
@@ -184,62 +184,62 @@ Le patch 1.0.1g d'openSSL corrige cette vulnérabilité. Il est donc recommandé
 ### 0 SELECT basics
 #### Introducing the world table of countries
 
-Pour afficher la population de l'Allemagne, j'ai changer la France par l'Allemagne comme le montre la commande ci-dessous.
+To display the population of Germany, I changed France to Germany as shown in the command below.
 
     $ SELECT population FROM world WHERE name = 'Germany'
     
 #### Scandinavia
 
-Pour afficher la population de Sweden, Norway et Denmark, j'ai fait la commande ci-dessous en changeant le Brazil, la Russie et l'Inde par la Suède, la Norvège et le Danemark.
+To display the population of Sweden, Norway and Denmark, I made the command below by changing Brazil, Russia and India to Sweden, Norway and Denmark.
 
     $ SELECT name, population FROM world WHERE name IN ('Sweden', 'Norway', 'Denmark');
  
 #### Just the right size
 
-Pour afficher les pays ayant une taille se situant entre 200'000 et 250'500, j'ai fait la commande ci-dessous en changeant le 250'000 par 200'000 et 300'000 par 250'000.
+To display the countries with a size between 200'000 and 250'500, I made the command below by changing the 250'000 by 200'000 and 300'000 by 250'000.
 
     $ SELECT name, area FROM world WHERE area BETWEEN 200000 AND 250000
 
 ### 2 SELECT from World, from first subtask to 5 "France, Germany, Italy"
 #### 1) Introduction
 
-Pour afficher les noms, les continents et la population du monde, j'ai exécuté la commande ci-dessous.
+To display the names, continents and population of the world, I ran the command below.
 
     $ SELECT name, continent, population FROM world
     
 #### 2) Large Countries
 
-Pour afficher les noms des pays ayant une population d'au moins 200 million, j'ai exécuté la commande ci-dessous en modifiant 64'105'700 par 200'000'000 et en changeant le **"="** par **">="**.
+To display the names of countries with a population of at least 200 million, I ran the command below, changing 64'105'700 to 200'000'000 and changing the **"="** to **">="**.
 
     $ SELECT name FROM world WHERE population >= 200000000
    
 #### 3) Per Capita GDP
 
-Pour afficher les noms des pays et le PIB par habitant pour les pays ayant au moins une population de 200 million, j'ai effectué la commande ci-dessous.
+To display country names and GDP per capita for countries with a population of at least 200 million, I ran the command below.
 
     $ SELECT name, gdp/population FROM world WHERE population >= 200000000
     
 #### 4) South America In millions
 
-Pour afficher les noms et la population en million des pays se situant en Amérique du Sud, j'ai effectuer la commande suivante.
+To display the names and population in millions of countries located in South America, I performed the following command.
 
     $ SELECT name, population / 1000000 FROM world WHERE continent = 'South America'
 
 #### 5) France, Germany, Italy
 
-Pour afficher les noms et population de la France, L'Allemagne et l'Italie, j'ai effectuer la commande suivante : 
+To display the names and population of France, Germany and Italy, I made the following command: 
 
     $ SELECT name, population  FROM world Where name IN ('France', 'Germany', 'Italy')
 
 #### 7) United
 
-Pour afficher touts les noms des pays ayant le mot **"United"** dans leur nom, j'ai utilisé **"LIKE"** avec le symbole **"%"**. Le symbole **"%"** permet d'indiquer la position de la particule dans l'élément rechercher.
+To display all the names of countries with the word **"United "** in their name, I used **"LIKE "** with the symbol **"%"**. The **"%"** symbol is used to indicate the position of the particle in the search item.
 
-%test  : tous les éléments finissant par **"test"**.
+test% : all elements ending with **"test"**.
 
-test%  : tous les éléments commençant par **"test"**.
+test%: all elements beginning with **"test"**.
 
-%test% : tous les éléments ayant dedans **"test"**
+test%: all elements with **"test"** inside
 
 
     $ SELECT name FROM world Where name LIKE '%United%'
