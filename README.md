@@ -133,6 +133,30 @@ In these two scenarios we can see that the attacker can easily modify the id par
 
 ----------
 
+## Darknet Diaries : Ep 2 The Peculiar Case of the VThech Hacker
+
+- 15 décembre 2015 un suspect de 21 ans ce fait arrêter pour l'affaire de piratage de jouets pour enfant VTech.
+- 6.5 million de compte d'enfant et presque 5 millions de compte d'aldultes ont été compromis.
+- Les données qui ont été volés se limite à des nom d'enfants et à leurs adresses. Aucune donnée de carte de crédit n'a été volée.
+- Ces nouveaux jouets ont pour but de permttre aux enfant d'immiter leurs parents avec leurs tablettes et smartwatches. Ces jouets disposent d'une connection à internet comme tout autre tablettes standard du marché. Grâce à ce nouveau divertissement, les enfants sont également en mesure d'envoyer des messages, des photos, des vidéo et des enregistrement sur le téléphone de leurs parents.
+- Lors de l'aquisition d'un jouet VTech, vous devez vous enregistrer à leur platform. Les parents doivent fournir des données comme l'adresse (domicile), un nom d'utilisateur et un mots de passe. Ils doivent également mettre en place un profile pour leurs enfants en indiquant le nom, le sexe, la date de naissance et finalament le system recommande de mettre une photo de l'enfant pour compléter le profile.
+- VTech met à disposition un store pour permettre le téléchargement d'application, de jeux et de livres.
+- Il existe un forum dédier au partage d'expérience et d'anectode sur le piratage de produit VTech. Les hackers plutôt accès hardware montre des manières détournées d'utilisé ces jouets en accèdant aux système d'exploitation et en possédant les accès root, ils sont capable de modifier le jouet selon leurs envies.
+- Comme dit la hardware hacker community : "if you can't open it, you don't own it".
+- Modifier un bien éléctronique au niveau hardware ou software n'est pas illégal, le seul impact sera l'annulation de la garantie constructeur.
+- En gagnant en popularité, le forum voit des profiles autre que les hackers hardware. Des hackers de tout type arrivent et s'interresse au produits VTech. C'est le cas du hacker réseau qui est au centre du podcast.
+- Le site internet planetvtech.com est vulnerable aux injections SQL.
+- Le hacker qui est au centre de l'intrigue réussi à mener à bien une injection SQL contre le site planetvtech.com et réussi sans aucune peine à obtenir les accès root. Étant en possessions du pouvoir suprême et motivé par la curiosité il est parti en exploration. Il a trouvé des serveurs de base de donnnées, il a donc copié toutes les bases de données et c'est ensuite déconnecté.
+- Il avait accès aux données (name, username, e-mail, password, secret question, secret answer, address, IP address) de plus de 4.8 million de persons ,parents, stocké sur son ordinateur.
+-  En cherchant plus profondemant, il a trouvé une table nommé **Member**. Cette table contenait les noms, les dates de naissances, les genres et l'id des parents des enfants.
+-  Le hacker avait toutes les cartes en main pour savoir le nom complet et l'adresse des enfants contenu dans les bases de données qu'il avait volé.
+-  La table contenait les données de 200'000 enfants d'environ 5 ans.
+-  En ayant autant de données, il aurait pu s'implement les échanger sur le deep web contre une somme généreuse de bitcoin, mais il décida de raconter son acte et ses découvertes au médias.
+-  Il prit contact de manière anonyme avec le reportère du **Vice's Motherboard**, **Lorenzo Franceschi-Bicchierai**.
+-  
+
+---------
+
 ## CVE-2014-0160 Openssl heartbleed vulnerability
 
 ### SSL protocol
