@@ -247,4 +247,10 @@ Dans cet exercice, nous voulons établir une injection SQL pour obtenir la liste
 
     $ SELECT * FROM user_data WHERE Login_Count = 1 and userid = 1 or true
  
+### Compromising confidentiality with String SQL injection
+
+Dans cette exercice, nous voulons créer une injection nous permettons d'accèder à toutes les infromations des employées. Pour cela nous devons mettre en place un commande SQL qui sera toujours vrai, comme pour les exercices précèdents.
+
+    $ SELECT * FROM employees WHERE last_name = '' and auth_tan = '' or true ; --
     
+
