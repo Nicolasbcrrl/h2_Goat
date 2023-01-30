@@ -156,11 +156,18 @@ Heartbleed est une vulnérabilité qui été découverte le 7 avril 2014 par des
 - l'intégrité du contenu
 Les attaquants peuvent par ce moyen écouter des communications et volé des donnée directement à l'utilisateur et des services. Cela sans avoir à utiliser d'information ou d'identifiants privilégiés, selon les auteur du site internet [heartbleed.com](https://heartbleed.com/), qui ont menet des tests sur leurs services.
 
-#### Comment fonctionne-t-elle
+#### Comment fonctionne-t-elle ?
 
-Les protocoles SSL et TLS possèdent une fonctionnalité que l'on nomme **"Heartbeat"**. Cette foncitonnalité permet à une extrimité d'une communication client ou server d'envoyer un message que l'interlocuteur va répéter en retour, afin de verfier que la connection est active et chiffrée. Le mesage envoyé par un client qui veut controller si le serveur est toujours actif, envoi le messge et un entier représentant la longueur du message. Suite à la sortie de la mise à 1.0.1, les développeurs d'oppenSSL n'ont pas mis un outils qui va vérifier que la longueur réel du message corresponde vraiment à l'indicateur de taille du message 
+Les protocoles SSL et TLS possèdent une fonctionnalité que l'on nomme **"Heartbeat"**. Cette foncitonnalité permet à une extrimité d'une communication client ou server d'envoyer un message que l'interlocuteur va répéter en retour, afin de verfier que la connection est active et chiffrée. Le mesage envoyé par un client qui veut controller si le serveur est toujours actif, envoi le messge et un entier représentant la longueur du message. Suite à la sortie de la mise à 1.0.1, les développeurs d'oppenSSL n'ont pas mis un outils qui va vérifier que la longueur réel du message corresponde vraiment à l'indicateur de taille du message envoyer par le client.
 
-Le patch 1.0.1g d'openSSL corrige cette vulnérabilité. Il est donc recommandé de passer à cette version le plus rapidement posisible.
+Cette vulnérabilité est essentiellement basée sur le fait que le serveur ne vérifie pas l'entier correspondant à la taille du message et de ce fait à cause de la fonctionnalité **"Heartbeat"**, le serveur renvoit autant d'octest que demandé par le client. De ce fait, le client indique une taille du message plus grande que celle du message. Le serveur va donc combler le vide en retournant des information au hasard pour combler la différence. Soit des informations non utile, comme très sensible comme des clés privée de certificat, mots de passe et etc. 
+
+L'attaquant ne sachant pas à l'avance les données que le serveur va renvoyer, il devra faire un tri des données qu'il juge utile ou pas.
+
+
+#### Résolution
+
+Le patch 1.0.1g d'openSSL corrige cette vulnérabilité. Il est donc recommandé de passer à cette version le plus rapidement possible.
 
 
 ----------
