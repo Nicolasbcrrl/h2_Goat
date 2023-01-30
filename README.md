@@ -133,6 +133,38 @@ In these two scenarios we can see that the attacker can easily modify the id par
 
 ----------
 
+## CVE-2014-0160 Openssl heartbleed vulnerability
+
+### SSL protocol
+
+SSL pour Secure Socket Layer, est un protocole dévelopé par la compagnie Netscape Communication Corporation. Ce protocole permet aux applications client/serveur de communiquer de manière sécurisée. La version 3 introduite en 2003  est utilisée par les navigateurs. Ce protocole à connue une "évolution" créer par l'IETF (Internet Engineering Task Force) qui est le protocole TLS (Transport Layer Security)
+
+### openSSL
+
+OpenSSL est une boite à outils de cryptographie qui comporte deux biliothèques, libcrypto et libssl. oppenSSL implémente les protocoles SSL et TLS. Cette boite à outilis offre la possibilité de réaliser des application client/serveur sécurisées s'appuyant sur SSL et TLS. Il propose également une ligne de commande permettant notamant : 
+- la création de clés RSA, DSA 
+- chiffrement et déchiffrement 
+- la signature et le chiffrement de courriers
+- test de client et servers SSL/TLS
+- création de certificats X509
+
+### Heartbleed
+
+Heartbleed est une vulnérabilité qui été découverte le 7 avril 2014 par des équipes de sécurité de Google et par des ingénieurs de l'entreprise finlandaise Codenomicon. Plus de 17% des serveur web soit environ un demi-million de serveur aurait été touché par cette vulnérabilité qui touche la bibliothèque de logiciel openSSL. Cette vulnérabilité a été introduite suite à une proposition de correction de bugs et d'améliorations de la version 1.0.1 d'openSSL. Les version d'openSSL qui ont été affecté sont de la 1.0.1 à 1.0.1f et 1.0.2-beta1. Heartbleed permet à l'attaquant de voler des données protégées par le cryptage SSL/TLS. Cette vulnérabilité permet à n'importe qu'elle personne sur Internet de lir la mémoir des sytèmes protégés. Il compromet :
+- les clé secrètes
+- les noms et mots de passe des utilisateurs
+- l'intégrité du contenu
+Les attaquants peuvent par ce moyen écouter des communications et volé des donnée directement à l'utilisateur et des services. Cela sans avoir à utiliser d'information ou d'identifiants privilégiés, selon les auteur du site internet [heartbleed.com](https://heartbleed.com/), qui ont menet des tests sur leurs services.
+
+#### Comment fonctionne-t-elle
+
+Les protocoles SSL et TLS possèdent une fonctionnalité que l'on nomme **"Heartbeat"**. Cette foncitonnalité permet à une extrimité d'une communication client ou server d'envoyer un message que l'interlocuteur va répéter en retour, afin de verfier que la connection est active et chiffrée. Le mesage envoyé par un client qui veut controller si le serveur est toujours actif, envoi le messge et un entier représentant la longueur du message. Suite à la sortie de la mise à 1.0.1, les développeurs d'oppenSSL n'ont pas mis un outils qui va vérifier que la longueur réel du message corresponde vraiment à l'indicateur de taille du message 
+
+Le patch 1.0.1g d'openSSL corrige cette vulnérabilité. Il est donc recommandé de passer à cette version le plus rapidement posisible.
+
+
+----------
+
 ## SQLZoo
 ### 0 SELECT basics
 #### Introducing the world table of countries
