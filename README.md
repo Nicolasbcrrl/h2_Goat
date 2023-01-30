@@ -213,8 +213,9 @@ In these two scenarios we can see that the attacker can easily modify the id par
  
 - On 8 January 2018 the FTC found evidence that VTech had failed to comply with COPPA laws. As a result, the company had to pay a fine of $650,000 to the FTC, but it continues to claim that they did not violate any laws.
 
+### Personal thinking
 
-
+This article shows for me the decadence of the world we live in. The digital world is affecting people earlier and earlier and with the benefits it brings but also with the bad. It's sad I think, very sad that we have reached a stage where we can't even trust a simple children's toy anymore. Children as young as 5 years old having their data stolen, I find that very sad. But the worst thing is that companies like Vtech are still unpunished for their lack of attention to the security of their customers' data.
 
 ## Sources
 
