@@ -135,26 +135,90 @@ In these two scenarios we can see that the attacker can easily modify the id par
 
 ## Darknet Diaries : Ep 2 The Peculiar Case of the VThech Hacker
 
-- 15 décembre 2015 un suspect de 21 ans ce fait arrêter pour l'affaire de piratage de jouets pour enfant VTech.
-- 6.5 million de compte d'enfant et presque 5 millions de compte d'aldultes ont été compromis.
-- Les données qui ont été volés se limite à des nom d'enfants et à leurs adresses. Aucune donnée de carte de crédit n'a été volée.
-- Ces nouveaux jouets ont pour but de permttre aux enfant d'immiter leurs parents avec leurs tablettes et smartwatches. Ces jouets disposent d'une connection à internet comme tout autre tablettes standard du marché. Grâce à ce nouveau divertissement, les enfants sont également en mesure d'envoyer des messages, des photos, des vidéo et des enregistrement sur le téléphone de leurs parents.
-- Lors de l'aquisition d'un jouet VTech, vous devez vous enregistrer à leur platform. Les parents doivent fournir des données comme l'adresse (domicile), un nom d'utilisateur et un mots de passe. Ils doivent également mettre en place un profile pour leurs enfants en indiquant le nom, le sexe, la date de naissance et finalament le system recommande de mettre une photo de l'enfant pour compléter le profile.
-- VTech met à disposition un store pour permettre le téléchargement d'application, de jeux et de livres.
-- Il existe un forum dédier au partage d'expérience et d'anectode sur le piratage de produit VTech. Les hackers plutôt accès hardware montre des manières détournées d'utilisé ces jouets en accèdant aux système d'exploitation et en possédant les accès root, ils sont capable de modifier le jouet selon leurs envies.
-- Comme dit la hardware hacker community : "if you can't open it, you don't own it".
-- Modifier un bien éléctronique au niveau hardware ou software n'est pas illégal, le seul impact sera l'annulation de la garantie constructeur.
-- En gagnant en popularité, le forum voit des profiles autre que les hackers hardware. Des hackers de tout type arrivent et s'interresse au produits VTech. C'est le cas du hacker réseau qui est au centre du podcast.
-- Le site internet planetvtech.com est vulnerable aux injections SQL.
-- Le hacker qui est au centre de l'intrigue réussi à mener à bien une injection SQL contre le site planetvtech.com et réussi sans aucune peine à obtenir les accès root. Étant en possessions du pouvoir suprême et motivé par la curiosité il est parti en exploration. Il a trouvé des serveurs de base de donnnées, il a donc copié toutes les bases de données et c'est ensuite déconnecté.
-- Il avait accès aux données (name, username, e-mail, password, secret question, secret answer, address, IP address) de plus de 4.8 million de persons ,parents, stocké sur son ordinateur.
--  En cherchant plus profondemant, il a trouvé une table nommé **Member**. Cette table contenait les noms, les dates de naissances, les genres et l'id des parents des enfants.
--  Le hacker avait toutes les cartes en main pour savoir le nom complet et l'adresse des enfants contenu dans les bases de données qu'il avait volé.
--  La table contenait les données de 200'000 enfants d'environ 5 ans.
--  En ayant autant de données, il aurait pu s'implement les échanger sur le deep web contre une somme généreuse de bitcoin, mais il décida de raconter son acte et ses découvertes au médias.
--  Il prit contact de manière anonyme avec le reportère du **Vice's Motherboard**, **Lorenzo Franceschi-Bicchierai**.
--  
 
+- 15 December 2015 a 21-year-old suspect is arrested for the VTech children's toy hacking case.
+
+- 6.5 million children's tales and almost 5 million adult accounts were compromised.
+
+- The data that was stolen was limited to children's names and addresses. No credit card data was stolen.
+
+- These new toys are intended to allow children to imitate their parents with their tablets and smart watches. These toys have an internet connection like any other standard tablet on the market. With this new entertainment, children are also able to send messages, photos, videos and recordings to their parents' phones.
+
+- When purchasing a VTech toy, you must register with their platform. Parents have to provide data such as home address, a user name and a password. They also have to set up a profile for their children indicating name, gender, date of birth and finally the recommended system to put a picture of the child to complete the profile.
+
+- VTech provides a store for downloading applications, games and books.
+
+- There is a forum dedicated to sharing experiences and anecdotes about hacking VTech products. The hardware hackers show devious ways of using these toys by accessing the operating systems and by possessing root access, they are able to modify the toy to their liking.
+
+- As the hardware hacker community says: "if you can't open it, you dont own it".
+
+- Modifying an electronic item in hardware or software is not illegal, the only impact will be the cancellation of the manufacturer's warranty.
+
+- As the forum grows in popularity, it is seeing profiles other than hardware hackers. Hackers of all types are arriving and taking an interest in VTech products. This is the case of the network hacker who is the focus of the podcast.
+
+- The planetvtech.com website is vulnerable to SQL injections.
+
+- The hacker at the centre of the story succeeds in carrying out an SQL injection against the planetvtech.com website and manages to gain root access without any difficulty. Being in possession of the ultimate power and motivated by curiosity he went exploring. He found database servers, copied all the databases and then logged off.
+
+- He had access to the data (name, username, e-mail, password, secret question, secret answer, address, IP address) of more than 4.8 million people, relatives, stored on his computer.
+
+- When he searched deeper, he found a table named **Member**. This table contained the names, dates, genders and ids of the children's parents.
+
+- The hacker had all the cards in his hand to know the full name and address of the children contained in the databases he had stolen.
+
+- The table contained the data of 200,000 children of about 5 years old.
+
+- With so much data, he could have traded it on the deep web for a generous sum of bitcoin, but he decided to tell the media about his act and his findings.
+
+- He anonymously contacted **vice's Motherboard** reporter, **Lorenzo Franceschi-Bicchierai**.
+
+- The hacker describes himself as an ethical hacker who does not like to see such sensitive data, especially about children, being so easily accessible. He also specifies that he only acts to bring problems to light and not for darker motives.
+
+- Lorenzo Franceschi-Bicchierai as a reporter, he has to check if the hacker is telling the truth and if the recent ones are legitimate.
+
+- The passwords linked to the email addresses the hacker had provided were not encrypted in the right way. For encryption, they used MD5 which is not sufficient to guarantee the security of the password.
+
+- The use of HTTPS protocol is not used everywhere on the VTech website. The site was running on the ASP 2.0 version, which had not been supported by Microsoft for four years (at the time of the incident). Error messages when connecting to the website showed the SQL command to be used by the system to establish the user's connection. All these problems without even trying to hash the website.
+
+- The reporter tried several times to contact VTech, without success. Until a VTech spockesperson answered. The representative, Grace Ping, informed him that the company had learned of the intrusion through Lorenzo's contact.
+
+- The spokesperson explained to Lorenzo that after receiving his e-mail, they looked for signs of intrusion and informed their customers by e-mail that their credentials were encrypted, which is a lie because MD5 encryption is not sufficient or even ineffective.
+
+- The company disconnected websites potentially affected by the attack.
+
+- Following the shutdown of VTech's internet platforms, Lorenzo released an article that brought the news to millions of consumers around the world.
+
+- VTech's stock plummeted.
+
+- The hacker discovered other files and directories containing photos, audio, logs and messages. He gave this new data to Lorenzo who made a new article with this information.
+
+- VTech announced in an FAQ that the attack did not only affect 200,000 children but 6.3 million.
+
+- VTech did not admit that any photos were stolen.
+
+- Two US Senators Edward Markey and Joe Barton sent a letter to VTech seeking answers to some of their questions. Such as whether the data collected was sold, what type of information was collected on children under 12, what purpose you use the data for, and finally, what type of encryption you use to protect the data.
+
+- The company did not respond immediately, but updated its FAQs to address some of these questions.
+
+- VTech hired FireEye to resolve the security issues. Two months later the servers were partially restored, but users were still unable to access the app store.
+
+- VTech began selling a new range of products consisting of smart light bulbs, door sensors, and security cameras.
+
+- The reporter contacted the marketing director to find out if this new range was really safe. The director replied:
+**going through penetration tests by a third party and everyhing is going to be very secure "**.
+
+- After this attack, the company updated the terms on their website specifying that the user agrees that their data is not secured on VTech.
+
+- In 2017 a lawsuit was filed against the company, but it was dismissed for lack of evidence against VTech.
+ 
+- On 8 January 2018 the FTC found evidence that VTech had failed to comply with COPPA laws. As a result, the company had to pay a fine of $650,000 to the FTC, but it continues to claim that they did not violate any laws.
+
+
+
+
+## Sources
+
+[Darknet Diaries : Ep 2 The Peculiar Case of the VThech Hacker](https://darknetdiaries.com/episode/2/)
 ---------
 
 ## CVE-2014-0160 Openssl heartbleed vulnerability
