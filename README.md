@@ -209,48 +209,64 @@ test%  : tous les éléments commençant par **"test"**.
 
 ### What is SQL ? exercices
 
-Pour cet exercice, je devais trouver le département de l'employé **"Bob"** en m'aidant de la table **"employees"**. J'ai effectuer la commande suivante pour trouver le nom du département :
+For this exercise, I had to find the department of the employee **"Bob"** using the table **"employees"**. I performed the following command to find the department name.
  
      $ SELECT department FROM employees WHERE first_name = 'Bob';
      
 ### Data Manipulation Language (DML)
 
-Pour modifier le département de l'employé **"Tobi Barnett"**, j'ai eu recours à commande **"UPDATE"** afin de modifier le département.
+To change the department of the employee **"Tobi Barnett"**, I used the **"UPDATE"** command to change the department.
 
     $ UPDATE employees SET department = 'Sales' WHERE first_name = 'Tobi' and last_name = 'Barnett';
     
-J'ai utilisé le prénom et le nom de famille pour éviter au maximum la confusion avec une personne qui aurait un nom ou un nom de famille équivalente.
+I have used the first and last name to avoid as much as possible confusion with a person who has an equivalent name or surname.
 
 ### Data Definition Language (DDL)
 
-Pour ajouter une nouvelle colonne dans la table, il faut utiliser la commande SQL **"ALTER TABLE"** pour modifier la table et ensuite utilisé la commande **"ADD COLUMN"**. Comme le montre la commande ci-dessous:
+To add a new column to the table, use the SQL command**"ALTER TABLE "** to modify the table and then use the command **"ADD COLUMN"**. As shown in the command below.
 
     $ ALTER TABLE employees ADD COLUMN phone varchar(20);
     
 ### Data Control Language (DCL)
 
-Pour modifier les permissions dans la gestion d'une base de données, il est plus simple de créer des groupes d'utilisateur avec des permissions prédéfinit par l'administrateur. Dans cette execercice, j'ai dû autoriser le groupe **"UnauthorizedUser"** à pouvoir modifier les tables de la base de donnée. Pour cela j'ai utilisé la commande **"GRANT"** qui permet la mise en place des privilège.
+To change permissions in database management, it is easiest to create user groups with predefined permissions by the administrator. In this exercise, I had to allow the **"UnauthorizedUser"** group to modify the database tables. To do this I used the **"GRANT"** command which allows privileges to be set.
 
     $ GRANT ALTER TABLE TO UnauthorizedUser;
     
 ### Try It! String SQL injection
 
-Pour faire l'injection, je me suis basé sur les diffèrents exemple présenté au chapitre 6 de **SQL Injection (intro)**. De plus en lisant les consigne j'ai vu que savoir le nom spécifique d'un utilisateur n'était pas nécessaire. Avec tout cela pris en compte, j'ai parmettré cette commande SQL :
+To do the injection, I based myself on the different examples presented in chapter 6 of **SQL Injection (intro)**. Also, reading the instructions I saw that knowing the specific name of a user was not necessary. With all this in mind, I issued this SQL command.
 
     $ SELECT * FROM user_data WHERE first_name = 'John' AND last_name = '' or '1' = '1'
 
-Selon les explications, cette injection fonctionne car **"or '1' = '1'"** est toujours évalué comme vrai.
+According to the explanations, this injection works because **"or '1' = '1'"** is always evaluated as true.
 
 ### Try It! String SQL injection
 
-Dans cet exercice, nous voulons établir une injection SQL pour obtenir la liste complète des employees. Pour cela nous devons trouver un moyen de créer une commande SQL qui est toujours vrai. Pour cela j'ai fait la commande ci-dessous. Pour cette commande il n'est pas nécessaire de connaitre un **"Login_Count"**, mais il nous faut mettre la formule suivante **1 or true** pour obtenir une condition toujours vrai.
+In this exercise, we want to set up an SQL injection to get the full list of employees. To do this we need to find a way to create an SQL command that is always true. To do this I have made the command below. For this command it is not necessary to know a **"Login_Count "**, but we need to put the following formula **1 or true** to get an always true condition.
 
     $ SELECT * FROM user_data WHERE Login_Count = 1 and userid = 1 or true
  
 ### Compromising confidentiality with String SQL injection
 
-Dans cette exercice, nous voulons créer une injection nous permettons d'accèder à toutes les infromations des employées. Pour cela nous devons mettre en place un commande SQL qui sera toujours vrai, comme pour les exercices précèdents.
+In this exercise, we want to create an injection that allows us to access all the information of the employees. To do this we need to set up an SQL command that will always be true, as in the previous exercises.
 
     $ SELECT * FROM employees WHERE last_name = '' and auth_tan = '' or true ; --
     
+### Compromising Integrity with Query chaining
 
+In this exercise, we want to increase the salary of the employee **Smith**. To do this, we first need to close the first SQL command by using these " **' ;** " elements to set the last_name to null and close the SQL command. Then we can do a simple SQL command to **UPDATE** the employee's salary. This command will be followed by these **" -- "** symbols so that the following statements are ignored.
+
+    $ SELECT * FROM employees WHERE lat_name = '' ; UPDATE employees SET salary = 90000 WHERE last_name = 'Smith'; --
+    
+### Compromising Availability
+
+In order to cover our tracks, we need to clear the table containing all the logs. A log is generally a record of what the user does on the system.
+To do this we need to use the SQL command **"DROP TABLE "** and as in the previous exercise, we need to close the previous SQL command. 
+
+    $ SELECT * FROM employees WHERE lat_name = '' ; DROP TABLE access_log; --
+
+## Sources
+
+**WebGoat application** 
+- SQL Injection (Intro)
