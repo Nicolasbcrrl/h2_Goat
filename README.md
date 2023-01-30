@@ -243,6 +243,8 @@ Selon les explications, cette injection fonctionne car **"or '1' = '1'"** est to
 
 ### Try It! String SQL injection
 
+Dans cet exercice, nous voulons établir une injection SQL pour obtenir la liste complète des employees. Pour cela nous devons trouver un moyen de créer une commande SQL qui est toujours vrai. Pour cela j'ai fait la commande ci-dessous. Pour cette commande il n'est pas nécessaire de connaitre un **"Login_Count"**, mais il nous faut mettre la formule suivante **1 or true** pour obtenir une condition toujours vrai.
+
     $ SELECT * FROM user_data WHERE Login_Count = 1 and userid = 1 or true
  
     
