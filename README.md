@@ -219,6 +219,7 @@ In these two scenarios we can see that the attacker can easily modify the id par
 ## Sources
 
 [Darknet Diaries : Ep 2 The Peculiar Case of the VThech Hacker](https://darknetdiaries.com/episode/2/)
+
 ---------
 
 ## CVE-2014-0160 Openssl heartbleed vulnerability
