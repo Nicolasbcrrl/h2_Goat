@@ -160,14 +160,22 @@ Les attaquants peuvent par ce moyen écouter des communications et volé des don
 
 Les protocoles SSL et TLS possèdent une fonctionnalité que l'on nomme **"Heartbeat"**. Cette foncitonnalité permet à une extrimité d'une communication client ou server d'envoyer un message que l'interlocuteur va répéter en retour, afin de verfier que la connection est active et chiffrée. Le mesage envoyé par un client qui veut controller si le serveur est toujours actif, envoi le messge et un entier représentant la longueur du message. Suite à la sortie de la mise à 1.0.1, les développeurs d'oppenSSL n'ont pas mis un outils qui va vérifier que la longueur réel du message corresponde vraiment à l'indicateur de taille du message envoyer par le client.
 
-Cette vulnérabilité est essentiellement basée sur le fait que le serveur ne vérifie pas l'entier correspondant à la taille du message et de ce fait à cause de la fonctionnalité **"Heartbeat"**, le serveur renvoit autant d'octest que demandé par le client. De ce fait, le client indique une taille du message plus grande que celle du message. Le serveur va donc combler le vide en retournant des information au hasard pour combler la différence. Soit des informations non utile, comme très sensible comme des clés privée de certificat, mots de passe et etc. 
+Cette vulnérabilité est essentiellement basée sur le fait que le serveur ne vérifie pas l'entier correspondant à la taille du message et de ce fait à cause de la fonctionnalité **"Heartbeat"**, le serveur renvoit autant d'octest que demandé par le client. De ce fait, le client indique une taille du message plus grande que celle du message. Le serveur va donc combler le vide en retournant des information au hasard pour combler la différence. Soit des informations non utile, comme très sensible comme des clés privée de certificat, mots de passe et nom d'utilisateurs. L'attaquant ne sachant pas à l'avance les données que le serveur va renvoyer, il devra faire un tri des données qu'il juge utile ou pas.
 
-L'attaquant ne sachant pas à l'avance les données que le serveur va renvoyer, il devra faire un tri des données qu'il juge utile ou pas.
+![heartbleed](Simplified_Heartbleed_explanation.svg.png)
 
 
 #### Résolution
 
 Le patch 1.0.1g d'openSSL corrige cette vulnérabilité. Il est donc recommandé de passer à cette version le plus rapidement possible.
+
+## Sources
+
+[Heartbleed image](https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Simplified_Heartbleed_explanation.svg/1920px-Simplified_Heartbleed_explanation.svg.png)
+
+[malwarebytes.com](https://www.malwarebytes.com/blog/news/2019/09/everything-you-need-to-know-about-the-heartbleed-vulnerability)
+
+[lig-membres.imag.fr](https://lig-membres.imag.fr/prost/M1_MEEF_NSI/openssl.htm)
 
 
 ----------
