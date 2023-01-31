@@ -39,11 +39,11 @@ A cloud provider has default sharing permissions open to other cloud providers a
 
 ### Overview of the study
 - This category represents the sixth most common security vulnerability according to the OWASP Top 10 critical security of 2021.
-- Catégorie qui est compliqué à tester et à évaluer le risque de cette vulnerabiliter. 
-- Cette catégorie ne possède pas de Common Vulnerability and Exposures (CVE) associé aux CWEs inclu.
-- Les CWEs qui sont associer à cette catégorie sont CWE-1104 et les deux CWEs du Top 10 de 2013 et 2017
-- CWE-1104 représente les faiblesses lié à l'utilisation de composants tiers non maintenus.
-
+- Category that is complicated to test and assess the risk of this vulnerability. 
+- This category does not have Common Vulnerability and Exposures (CVEs) associated with the included CWEs.
+- The CWEs that are associated with this category are CWE-1104 and the two top 10 CWEs from 2013 and 2017
+- CWE-1104 represents weaknesses related to the use of unmaintained third-party components.
+- 
 ### Description
 
 You are exposed to vulnerabilities if you meet any of the following conditions: 
@@ -56,11 +56,11 @@ You are exposed to vulnerabilities if you meet any of the following conditions:
 
 ### How to Prevent
 
-Afin d'éviter aux mieux les vulnérabilité, un processus de gestion des correctifs doit être mis en place pour : 
-- Supprimer tout ce qui superflux et inutile (dépendances, fichiers, composants, fonctionnalités, documentations, etc.).
-- Faire un inventaire des versions de vos composants aussi bien du côté client comme du côté server, ainsi que de leurs dépendances. Des outils comme OWASP Dependency Check, retire.js, etc. vous permette de faire votre inventaire. De plus, surveiller constament les nouvelles vulnérabilité dans les composant, à l'aide de site internet comme Common Vulnerability and Exposures (CVE) et National Vulnerability Database (NVD). 
-- Aquirez vos composant seulement chez des fournisseurs officiel.
-- Tenez vous informers sur les bibliothèques et les composant qui ne sont plus supporter ou qui ne publie plus de correctif. 
+In order to avoid vulnerabilities as much as possible, a patch management process must be put in place to : 
+- remove anything superfluous and unnecessary (dependencies, files, components, features, documentation, etc.).
+- Make an inventory of the versions of your components on both the client and server side, as well as their dependencies. Tools such as OWASP Dependency Check, retire js, etc. allow you to make your inventory. Also, constantly monitor new vulnerabilities in components, using websites like Common Vulnerability and Exposures (CVE) and National Vulnerability Database (NVD).
+- Only purchase components from official suppliers.
+- Keep up to date with libraries and components that are no longer supported or no longer release patches.
 
 ### Exemples Attack Scenarios
 
@@ -76,14 +76,16 @@ Components run with the same level of privileges as the application that uses th
 ## Injection
 
 ### Overview of the study
+
 - This category represents the sixth most common security vulnerability according to the OWASP Top 10 critical security of 2021.
-- 94% of the applications were tested. Ce teste a révélé un taux maximal de 19% d'incident, pour une moyen de 3% d'incident et plus de 274k d'occurence CWE.
-- Parmis les 274k CWE occurences, la CWE-79, la CWE-89 et la CWE-73 sont les catégories les plus présente. 
-- CWE-79 : Cross-site scripting, est un type de faille de sécurité des site internet qui pemet l'injection de contenu dans une page internet. Cela proque ainsi des actions sur les navigateur web visitant la page.
-- CWE-89 : injection SQL, est un type de faille de sécurité qui permet à l'attaquant de rentrer des commandes sql, dans le but de volé, modifier ou détruire des données.
-- CWE-73 : External Control of File Name or Path, est un type de faille de sécurtite de logiciel qui permet à un utilisateur d'entrer et de contôler ou influencer les chemins ou les noms de fichiers dans les opérations du système de fichiers.
+- 94% of the applications were tested. This test revealed a maximum incident rate of 19%, an average incident rate of 3% and over 274k CWE occurrences.
+- Of the 274k CWE occurrences, CWE-79, CWE-89 and CWE-73 were the most prevalent categories.
+- CWE-79 : Cross-site scripting, is a type of website security flaw that allows the injection of content into a web page. This causes actions to be taken on web browsers visiting the page.
+- CWE-89 : SQL injection, is a type of security flaw that allows the attacker to enter SQL commands, in order to steal, modify or destroy data.
+- CWE-73 : External control of file Name or Path, is a type of software vulnerability that allows a user to enter and control or influence the paths or file names in file system operations.
 
 ### Description
+
 - Data entered by users is not validated, checked or filtered by the application. 
 - Dynamic and unparmet queries are directly interpreted by the interpreter.
 - Malicious data is used in the search parameters of the ORM, in order to steal data.
